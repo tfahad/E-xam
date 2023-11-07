@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import "../ForgotPasswordForm/ForgotPasswordForm.css"
 
-const Demo = () => {
+const PasswordChange = () => {
   const [passwordState, setPasswordState] = useState({
     password: '',
     confirmPassword: '',
@@ -22,7 +23,7 @@ const Demo = () => {
         alert('Passwords do not match.');
       } else {
         alert('Password updated successfully!');
-        // Make the API request with the password and confirmPassword
+        //  Make the API request with the password and confirmPassword
          await axios.post(`http://localhost:5000/api/v1/pwd/demo/${id}/${token}`, passwordState)
          .then(res => {
           if(res.data.Status === "Success"){
@@ -36,8 +37,10 @@ const Demo = () => {
   };
 
   return (
-    <div className="password_form">
-      <div className="card">
+    <div className='PassWordChange-main'>
+      <div className='pass-background'>
+    <div className="PasswordChange-form-container">
+      <div className="passwordchange-input-group">
         Enter your new password:
         <input
           type="password"
@@ -53,10 +56,12 @@ const Demo = () => {
           value={passwordState.confirmPassword}
           placeholder="Confirm Password"
         />
-        <input type="submit" value="Update" onClick={handleClick} />
+        <button className='passWordChange-button' type="submit" onClick={handleClick} >Update</button>
       </div>
+    </div>
+    </div>
     </div>
   );
 };
 
-export default Demo;
+export default PasswordChange;

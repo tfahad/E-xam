@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import "../ForgotPasswordForm/ForgotPasswordForm.css"
 
-const ForgetPwd = () => {
+const ForgotPasswordForm = () => {
   const [mailerState, setMailerState] = useState({
     email: "",
   });
@@ -58,18 +59,20 @@ const ForgetPwd = () => {
   };
 
   return (
-    <div className='mailer_form'>
-      <div className="card">
+    <div className='Forgot-form-container'>
+      <div className="Forgot-form">
         Enter your registered email:
+        <div className="Forgot-input-group">
         <input type="email" name='email' onChange={handleChange} value={mailerState.email} />
-        <input type="submit" value="Submit" onClick={handleClick} />
+        <button className='Forgot-Button' type="submit" value="Submit" onClick={handleClick} >Reset</button>
         {errorMessage && <div className="error-message">{errorMessage}</div>}
+        </div>
       </div>
-      <div>
-        <Link to='/demo'>another page</Link>
+      <div Forgot-sign>
+        <Link to='/PasswordChange'>another page</Link>
       </div>
     </div>
   );
 };
 
-export default ForgetPwd;
+export default ForgotPasswordForm;
